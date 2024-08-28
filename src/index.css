@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.cartcard{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   gap: 20px;
+align-items: center;
+text-align: center;  
+background-image: linear-gradient(to bottom right, #cab9f1, #71254e);
+margin-top: 2%;
+ 
+}
+.singlecart
+{
+       border-radius: 10px; 
+ background-color: white;   
+        /* box-shadow: 10px 10px blanchedalmond; */
+margin-left: auto;
+margin-right: auto;
+height:max-content;
+width:300px;
+position: relative;
+}
+    .singlecart2
+{
+       border-radius: 10px; 
+ background-color: blue;   
+        /* box-shadow: 10px 10px blanchedalmond; */
+margin-left: auto;
+margin-right: auto;
+height: 305px;
+width:300px;
+position: absolute;
+top: 0;
+display: none;
+
+    }
+    .singlecart2 p{
+        position: absolute;
+        bottom: 0;
+        left: 30%;
+    }
+    
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(-25%);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+      }
+      50% {
+        transform: translateY(0);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      }
+    }
+    .singlecart:hover .singlecart2
+    {
+        
+        background-color: rgba(178, 185, 231, 0.8);
+       color: #fff;
+       font-weight: 700;
+       transition: all 0.8s;
+       display: block;
+    }
+    .singlecart:hover .singlecart2 p
+    {
+        bottom: 60px;
+    animation-name: bounce;
+    animation-duration: 1s;
+
+        transition: all 0.9s;
+    } 
+   
+    
+.images{
+ /* width: 50%;  */
+ height: 200px;
+ width: 200px;
+ object-fit: contain;
+margin-left:auto;
+margin-right: auto;
+}
+.productdec{
+    display: flex;
+    justify-content: space-between;
+}
+.header{
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 0px;
+}
+.headimg{
+    height: 95px;
+    mix-blend-mode: color-burn;
+    object-fit: cover;
+
+}
+.payicon{
+    padding-left:30%;
+}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1001;
+    max-width: max-content;
+    width: 90%;
+  }
+  .sliders{
+    background-image: url("D:\ecommerce_reactapi\public\slider4.webp");
+    height:100vh;
+    background-repeat: no-repeat;
+    object-fit: cover;
+
+  }
+  .sliders2{
+    background-image: url("D:\ecommerce_reactapi\public\slider2.jpeg");
+    height:100vh;
+    background-repeat: no-repeat;
+    object-fit: cover;
+
+  }
+  .sliders3{
+    background-image: url("D:\ecommerce_reactapi\public\slider3.avif");
+    height:100vh;
+    background-repeat: no-repeat;
+    object-fit: cover;
+
+  }
+  .sliders4{
+    background-image: url("D:\ecommerce_reactapi\public\slider1.jpeg");
+    height:100vh;
+    background-repeat: no-repeat;
+    object-fit: cover;
+
+  }
+  .sliders5{
+    background-image: url("D:\ecommerce_reactapi\public\slider1.jpeg");
+    height:100vh;
+    background-repeat: no-repeat;
+    object-fit: cover;
+
+  }
+  .sliders6{
+    background-image: url("D:\ecommerce_reactapi\public\slider1.jpeg");
+    height:100vh;
+    background-repeat: no-repeat;
+    object-fit: cover;
+
+  }
