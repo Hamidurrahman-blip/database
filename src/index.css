@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+body
+{
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
 .cartcard{
    display: grid;
    grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -91,8 +97,12 @@ margin-right: auto;
     box-sizing: border-box;
     margin-top: 0px;
     z-index: 1;
-    position: fixed;
+    position:fixed;
    
+}
+.header.active{
+  position: static;
+  background-color: #1b7cc9;
 }
 .header2{
   width: 100%;
@@ -133,42 +143,42 @@ margin-right: auto;
   }
   .sliders{
     background-image: url("D:\ecommerce_reactapi\public\slider2.jpeg");
-    height:100vh;
+    height: 550px;
     background-repeat: no-repeat;
     object-fit: cover;
 
   }
   .sliders2{
     background-image: url("D:\ecommerce_reactapi\public\slider6.jpeg");
-    height:100vh;
+    height:550px;
     background-repeat: no-repeat;
     object-fit: cover;
 
   }
   .sliders3{
     background-image: url("D:\ecommerce_reactapi\public\slider5.jpeg");
-    height:100vh;
+    height:550px;
     background-repeat: no-repeat;
     object-fit: cover;
 
   }
   .sliders4{
     background-image: url("D:\ecommerce_reactapi\public\slider4.webp");
-    height:100vh;
+    height:550px;
     background-repeat: no-repeat;
     object-fit: cover;
 
   }
   .sliders5{
     background-image: url("D:\ecommerce_reactapi\public\slider3.avif");
-    height:100vh;
+    height:550px;
     background-repeat: no-repeat;
     object-fit: cover;
 
   }
   .sliders6{
     background-image: url("D:\ecommerce_reactapi\public\slider1.jpeg");
-    height:100vh;
+    height:550px;
     background-repeat: no-repeat;
     object-fit: cover;
 

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Appcontext from '../context/Appcontext';
 import toast from 'react-hot-toast';
+import { FaStar } from "react-icons/fa";
 
 export default function Cartcad({product}) {
 const appcontext=useContext(Appcontext)
@@ -62,7 +63,7 @@ appcontext.setcartitems(
                 <p className='text-xl text-teal-700 mt-3'>
                   ${product.price}</p>
 
-                <p className="bg-teal-500 mt-3 px-4 py-1 text-sm rounded-full">{product.rating.rate}</p>
+                <p className="bg-teal-500 mt-3 px-4 py-1 text-sm rounded-full">{product.rating.rate}<span><FaStar /></span></p>
    
     </div>
     <div className='singlecart2'>
