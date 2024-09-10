@@ -6,13 +6,14 @@ import Slider from "react-slick";
 export default function Header() {
  const Catgeoryurl="https://fakestoreapi.com/products/categories/"
  const [catgeory,setallcatgeory]=useState([])
- async function getallcatgeory(){
+  async function getallcatgeory(){
     const response=await fetch(Catgeoryurl)
     const data=await response.json()
     setallcatgeory(data)
  }
  useEffect(()=>{
     getallcatgeory()
+    
  },[])
 
  var settings = {
@@ -22,10 +23,27 @@ export default function Header() {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-  
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+    const handleScroll = (e) => {
+        const { scrollTop, scrollHeight, clientHeight } = e.target;
+        const position = Math.ceil(
+            (scrollTop / (scrollHeight - clientHeight)) * 100
+        );
+        setScrollPosition(position);
+    
+        if(scrollPosition>50){
+          console.log("greater")
+        }
+        else{
+          console.log("smaller")
+        }
+    
+      };
+ 
 
  return (
-  <div >
+  <div  >
 
 
 <header className='header  absolute top-0 h-14 flex  justify-between items-center
@@ -49,7 +67,7 @@ return(
 
     </header>
 
-    <Slider {...settings} className='mb-0 relative' >
+    <Slider {...settings} className='mb-0 relative' onScroll={handleScroll()} >
       <div  className=' bg-cover sliders bg-center bg-top' >
       </div>
       <div  className=' bg-cover sliders2 bg-center bg-top'>
