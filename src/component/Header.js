@@ -16,8 +16,8 @@ export default function Header() {
  },[])
 
  var settings = {
-    dots: true,
-    infinite: true,
+    dots: false,
+    infinite:true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -28,14 +28,14 @@ export default function Header() {
   <div >
 
 
-<header className='header  h-14 flex  justify-between items-center
+<header className='header  absolute top-0 h-14 flex  justify-between items-center
      text-white text-center px-12' >
-<Link to="/"><img src='shopping.jpg' alt='image'  className=" ml-4 headimg "/></Link>
+<Link to="/" className='mix-blend-multiply'><img src='logo2 .png' alt='image'  className=" ml-4 headimg "/></Link>
 <div className='flex gap-8 '>
     {catgeory.map((item)=>{
 return(
     <Link to={`catgeorypage/${item}`} key={item} className='capitalize
-    text-black border-b-8 hover:bg-red-200'>
+    text-black border-b-4 border-blue-500 hover:bg-red-200'>
         {item}
     
     
@@ -44,27 +44,27 @@ return(
 
     })} 
 <Link to="/cartpage" className='capitalize
-    text-black border-b-8 hover:bg-red-200'>cart</Link>
+    text-black border-b-4 border-blue-500 hover:bg-red-200'>cart</Link>
 </div>
 
     </header>
 
-    <Slider {...settings} className='mb-0' >
-      <div  className=' sliders bg-center bg-top' >
+    <Slider {...settings} className='mb-0 relative' >
+      <div  className=' bg-cover sliders bg-center bg-top' >
       </div>
-      <div  className=' sliders2 bg-center bg-top'>
+      <div  className=' bg-cover sliders2 bg-center bg-top'>
         
       </div>
-      <div  className=' sliders3 bg-center bg-top'>
+      <div  className=' bg-cover  sliders3 bg-center bg-top'>
         
       </div>
-      <div  className=' sliders4 bg-center bg-top'>
+      <div  className=' bg-cover  sliders4 bg-center bg-top'>
        
       </div>
-      <div  className=' sliders5 bg-center bg-top'>
+      <div  className=' bg-cover  sliders5 bg-center bg-top'>
         
       </div>
-      <div  className=' slider6 bg-center bg-top'>
+      <div  className=' bg-cover  slider6 bg-center bg-top'>
 
       </div>
     </Slider>
