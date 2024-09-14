@@ -75,8 +75,7 @@ appcontext.setcartitems(
       {isModalOpen && (
         <div className="modal-overlay transition ease-in-out delay-150" onClick={handleCloseModal}>
           <div className="modal-box relative" onClick={e => e.stopPropagation()}>
-          <div className=' flex border-2 
-flex-col md:flex-row mt-12 
+          <div className=' flex border-2 flex-col md:flex-row mt-12 
 justify-center items-center max-w-5xl mx-auto'>
           <img  className="images w-1/2 " src={product.image} />
 

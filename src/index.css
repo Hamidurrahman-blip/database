@@ -141,6 +141,10 @@ margin-right: auto;
     max-width: max-content;
     width: 90%;
   }
+  .modal-box2{
+    background-color: #fff;
+    
+  }
   .sliders{
     background-image: url("D:\ecommerce_reactapi\public\slider2.jpeg");
     height: 550px;
