@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, redirect, useAsyncValue } from 'react-router-dom'
 import cartpage from '../pages/Cartpage'
-import Slider from "react-slick";
+import Slider from './Sliders';
+import { setuser } from './UserSlice';
+import { useDispatch } from 'react-redux';
 
 export default function Header() {
  const Catgeoryurl="https://fakestoreapi.com/products/categories/"
@@ -16,13 +18,7 @@ export default function Header() {
     
  },[])
 
- var settings = {
-    dots: false,
-    infinite:true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
+ 
   const [scrollPosition, setScrollPosition] = useState(false);
 
    const handleScroll = ()=> {
@@ -42,6 +38,58 @@ const handleOpenModal=()=>{
 const handleCloseModal=()=>{
   setIsModalOpen(false);
 }
+/* login modal*/
+const [isLoginModalOpen,setIsLoginModalOpen]=useState(false)
+const handleLoginOpenModal=()=>{
+  setIsLoginModalOpen(true);
+}
+const handleCloseLoginModal=()=>{
+  setIsLoginModalOpen(false);
+}
+
+const [Name,SetName]=useState("")
+const [Email,SetEmail]=useState("")
+const [Password,SetPassword]=useState("")
+
+const handleSubmit=(e)=>{
+  e.preventDefault();
+localStorage.setItem("user",JSON.stringify({Name:Name,Email:Email,Password:Password}))
+  handleCloseModal()
+}
+// const dispatch=useDispatch()
+// const handleSubmit=(e)=>{
+//   console.log(Name,Email,Password )
+//   e.preventDefault()
+//   dispatch(setuser({
+//     name:Name,
+//     email:Email,
+//     password:Password,
+
+// //   }))
+//   handleCloseModal()
+//   }
+  const[LoginData,SetLoginData]=useState([{Email:"",Password:""}])
+const[storeddata,setstoreddata]=useState([{}])
+useEffect(
+  ()=>{
+setstoreddata(JSON.parse(localStorage.getItem("user")))
+  },[LoginData]
+)
+const handleLogin=(e)=>{
+e.preventDefault();
+
+
+if(LoginData.Email==storeddata.Email && LoginData.Password==storeddata.Password ) {
+
+console.log("this is store data",storeddata)
+SetLoginData({Email:"",Password:""})
+}
+else{
+  console.log("wrong credantial")
+  console.log(LoginData.Email)
+}
+}
+
   return (
   <div  >
 
@@ -66,29 +114,10 @@ return(
     text-black border-b-4 border-blue-500 hover:bg-red-200 mr-28'>cart</Link>
 
 <button className='bg-blue-600 w-20 rounded-lg' onClick={handleOpenModal}>SIGNUP</button>
-<button className='bg-blue-600 w-20 rounded-lg'>LOGIN</button>
+<button onClick={handleLoginOpenModal} className='bg-blue-600 w-20 rounded-lg'>LOGIN</button>
 </div>
     </header>
-
-    <Slider {...settings} className='mb-0 relative' >
-      <div  className=' bg-cover sliders bg-center bg-top' >
-      </div>
-      <div  className=' bg-cover sliders2 bg-center bg-top'>
-        
-      </div>
-      <div  className=' bg-cover  sliders3 bg-center bg-top'>
-        
-      </div>
-      <div  className=' bg-cover  sliders4 bg-center bg-top'>
-       
-      </div>
-      <div  className=' bg-cover  sliders5 bg-center bg-top'>
-        
-      </div>
-      <div  className=' bg-cover  slider6 bg-center bg-top'>
-
-      </div>
-    </Slider>
+<Slider/>
 
     {isModalOpen && (
       <div className='modal-overlay  transition ease-in-out delay-150
@@ -98,22 +127,59 @@ return(
             <h1 className='font-semibold text-5xl text-center'>Sign Up</h1>
             <p className='mt-5  text-center'>Please fill this form to Ragister</p>
           </div>
+          {/* singupform */}
           <form className=' flex p-2 flex-row md:flex-col mt-5 
-justify-center items-start max-w-5xl mx-auto'>
+justify-center items-start max-w-5xl mx-auto' onSubmit={handleSubmit}>
 <label className=' m-2 font-medium'>FULL NAME </label>
 <input placeholder='Enter name' type='text' className=' Full Name 
-bg-slate-300 border-2 h-11 w-11/12 block m-2 rounded-md' />
+bg-slate-300 border-2 h-11 w-11/12 block m-2 rounded-md' value={Name}
+onChange={(e)=>SetName(e.target.value)} />
   <label className=' m-2 font-medium'>ENTER EMAIL </label>
   <input className=' email 
-  bg-slate-300 border-2 h-11 w-11/12 block rounded-md m-2' placeholder='Enter email' type='email' />
+  bg-slate-300 border-2 h-11 w-11/12 block rounded-md m-2' placeholder='Enter email' type='email' 
+  value={Email} onChange={(e)=>SetEmail(e.target.value)}/>
   <label className=' m-2 font-medium' >PASSWORD </label>
   <input className=' password 
-   border-2 w-11/12 h-11 bg-slate-300 block rounded-md m-1' placeholder='Password' type='email' />
+   border-2 w-11/12 h-11 bg-slate-300 block rounded-md m-1' placeholder='Password' type='password'
+   onChange={(e)=>SetPassword(e.target.value)} value={Password} />
 <div className=' m-2 w-fit'>
 <button className=' bg-red-500 w-56 text-2xl 
-h-14 font-medium rounded-sm text-white ml-2'>Cancel</button>
+h-14 font-medium rounded-sm text-white ml-2' onClick={handleCloseModal}>Cancel</button>
 <button className='submit bg-green-600 w-56 ml-2
-h-14 text-2xl font-medium rounded-sm  text-white'>Sign up</button>
+h-14 text-2xl font-medium rounded-sm  text-white' type='submit'>Sign up</button>
+</div>
+</form>
+          </div>
+        </div>
+
+    )}
+{/* singupform */}
+{isLoginModalOpen && (
+      <div className='modal-overlay  transition ease-in-out delay-150
+      ' onClick={handleCloseLoginModal}>
+        <div className='modal-box2 rounded-sm w-2/5 relative' onClick={e=>e.stopPropagation()}>
+          <div className=' border-gray-300   m-5'>
+            <h1 className='font-semibold text-5xl text-center'>Login</h1>
+            <p className='mt-5  text-center'>Please Enter Your Id and Password</p>
+          </div>
+          <form method='post' className=' flex p-2 flex-row md:flex-col mt-5 
+justify-center items-start max-w-5xl mx-auto' onSubmit={handleLogin}>
+<label className=' m-2 font-medium'>Email </label>
+  <input className=' email 
+  bg-slate-300 border-2 h-11 w-11/12 block rounded-md m-2' 
+  placeholder='Enter email' type='email' value={LoginData.Email} onChange={ (e)=>SetLoginData({...LoginData, Email:e.target.value})} />
+  <label className=' m-2 font-medium' >PASSWORD </label>
+  <input className=' password 
+   border-2 w-11/12 h-11 bg-slate-300 block rounded-md m-1' placeholder='Password' 
+   type='password' value={LoginData.Password} onChange={(e)=>SetLoginData({...LoginData, Password:e.target.value})} />
+<div className=' m-2 w-fit'>
+<button className=' bg-red-500 w-56 text-2xl 
+h-14 font-medium rounded-sm text-white ml-2'onClick={()=>{
+  handleCloseLoginModal()
+}}>Cancel</button>
+<button className='submit bg-green-600 w-56 ml-2
+h-14 text-2xl font-medium rounded-sm  text-white' value="submit" type="submit"
+>Login</button>
 </div>
 </form>
           </div>

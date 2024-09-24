@@ -36,7 +36,7 @@ position: relative;
         /* box-shadow: 10px 10px blanchedalmond; */
 margin-left: auto;
 margin-right: auto;
-height: 305px;
+height: 320px;
 width:300px;
 position: absolute;
 top: 0;
@@ -143,45 +143,44 @@ margin-right: auto;
   }
   .modal-box2{
     background-color: #fff;
-    
   }
   .sliders{
-    background-image: url("D:\ecommerce_reactapi\public\slider2.jpeg");
+    background-image: url("../public/slider2.jpeg");
     height: 550px;
     background-repeat: no-repeat;
     object-fit: cover;
 
   }
   .sliders2{
-    background-image: url("D:\ecommerce_reactapi\public\slider6.jpeg");
+    background-image: url("../public/slider6.jpeg");
     height:550px;
     background-repeat: no-repeat;
     object-fit: cover;
 
   }
   .sliders3{
-    background-image: url("D:\ecommerce_reactapi\public\slider5.jpeg");
+    background-image: url("../public/slider1.jpeg");
     height:550px;
     background-repeat: no-repeat;
     object-fit: cover;
 
   }
   .sliders4{
-    background-image: url("D:\ecommerce_reactapi\public\slider4.webp");
+    background-image: url("../public/slider4.webp");
     height:550px;
     background-repeat: no-repeat;
     object-fit: cover;
 
   }
   .sliders5{
-    background-image: url("D:\ecommerce_reactapi\public\slider3.avif");
+    background-image: url("../public/slider3.avif");
     height:550px;
     background-repeat: no-repeat;
     object-fit: cover;
 
   }
   .sliders6{
-    background-image: url("D:\ecommerce_reactapi\public\slider1.jpeg");
+    background-image: url("../public/slider5.jpeg");
     height:550px;
     background-repeat: no-repeat;
     object-fit: cover;
